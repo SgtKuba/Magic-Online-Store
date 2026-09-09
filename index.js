@@ -102,3 +102,19 @@ if (!product) {
 }
 
 console.log(expensiveProducts);
+
+console.log("INDEX JS GELADEN");
+
+const productList = document.querySelector("#product-list");
+
+const productCards = products.map((product) => {
+    return `
+    <h2>${product.name}</h2>
+    <p>Price: ${product.price} €</p>
+    <p>${product.instock ? "Currently in stock" : "Currently not in stock"}</p>
+    `;
+});
+
+productList.innerHTML = productCards.join("");
+
+
