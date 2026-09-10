@@ -106,12 +106,44 @@ console.log(expensiveProducts);
 console.log("INDEX JS GELADEN");
 
 const productList = document.querySelector("#product-list");
+const instockButton = document.querySelector("#instock-button")
+
+let showingInstockOnly = false;
+
+instockButton.addEventListener("click", () => {
+   if (showingInstockOnly) {
+    renderProducts(products);
+    instockButton.textContent = "Show only in-stock";
+    showingInstockOnly = false;
+}   else {
+    renderProducts(instockProducts);
+    instockButton.textContent = "Show all products";
+    showingInstockOnly = true;
+}
+});
+
+function renderProducts(productArray) {
+    const productCards = productArray.map((product) => {
+        return `
+        <div class="product-card">
+        <h2>${product.name}</h2>
+        <p>Price: ${product.price} €</p>
+        <p>${product.instock ? "Currently in Stock" : "Currently not in Stock"}</p>
+        </div>
+        `;
+    });
+    productList.innerHTML = productCards.join("");
+};
+
+renderProducts(products);
 
 const productCards = products.map((product) => {
     return `
+<div class="product-card">
     <h2>${product.name}</h2>
     <p>Price: ${product.price} €</p>
     <p>${product.instock ? "Currently in stock" : "Currently not in stock"}</p>
+</div>
     `;
 });
 
