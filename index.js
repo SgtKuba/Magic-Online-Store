@@ -56,7 +56,8 @@ const products = [
   {name: "NebelSchinken", price: 49.95, id: 625103, instock: true},
   {name: "SumpfWurst", price: 17.60, id: 481720, instock: true},
   {name: "KristallKartoffel", price: 33.33, id: 302851, instock: false},
-  {name: "GoldeneZwiebel", price: 420.69, id: 710420, instock: true}
+  {name: "GoldeneZwiebel", price: 420.69, id: 710420, instock: true},
+  {name: "FischButter", price: 12.99, id: 772390, instock: true}
 ];
 
 const productNames = products.map((product) => {
@@ -106,7 +107,16 @@ console.log(expensiveProducts);
 console.log("INDEX JS GELADEN");
 
 const productList = document.querySelector("#product-list");
-const instockButton = document.querySelector("#instock-button")
+const instockButton = document.querySelector("#instock-button");
+const searchInput = document.querySelector("#search-input");
+
+searchInput.addEventListener("input", () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredProducts = products.filter((product) => {
+        return product.name.toLowerCase().includes(searchTerm);
+    })
+    renderProducts(filteredProducts);
+});
 
 let showingInstockOnly = false;
 
@@ -137,16 +147,5 @@ function renderProducts(productArray) {
 
 renderProducts(products);
 
-const productCards = products.map((product) => {
-    return `
-<div class="product-card">
-    <h2>${product.name}</h2>
-    <p>Price: ${product.price} €</p>
-    <p>${product.instock ? "Currently in stock" : "Currently not in stock"}</p>
-</div>
-    `;
-});
-
-productList.innerHTML = productCards.join("");
 
 
