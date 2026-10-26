@@ -3,7 +3,7 @@ const products = [
   {name: "Burgerpatties", price: 22, id: 364283, instock: true},
   {name: "Gurke", price: 2.50, id: 461288, instock: true},
   {name: "Entenleber", price: 32.61, id: 552440, instock: true},
-  {name: "Kalbspenis", price: 71.50, id: 551007, instock: false},
+  {name: "Kalbsleber", price: 71.50, id: 551007, instock: false},
   {name: "Froschbeine", price: 15.99, id: 334270, instock: true},
   {name: "Drachenherz", price: 6537.20, id: 777391, instock: true},
   {name: "Krähenfuss", price: 23014, id: 773455, instock: true},
